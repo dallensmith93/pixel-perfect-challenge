@@ -1,31 +1,29 @@
-import type { LayoutCompareResult } from "../engine/layoutCompare";
+import type { DiffResult } from "../engine/diff";
 
 type DiffOverlayProps = {
-  result: LayoutCompareResult;
+  result: DiffResult;
 };
 
 export default function DiffOverlay({ result }: DiffOverlayProps) {
   return (
-    <section className="panel">
+    <section className="panel panel-metrics">
       <h2>Diff Overlay</h2>
-      <p className="match-score">Match: {result.matchScore.toFixed(1)}%</p>
+      <p className="total-score">Similarity {result.similarityScore.toFixed(2)}%</p>
 
-      <ul className="metric-list">
+      <ul className="metrics-list">
         <li>
           <span>Position</span>
-          <strong>{result.positionScore.toFixed(1)}%</strong>
+          <strong>{result.positionScore.toFixed(2)}%</strong>
         </li>
         <li>
           <span>Size</span>
-          <strong>{result.sizeScore.toFixed(1)}%</strong>
+          <strong>{result.sizeScore.toFixed(2)}%</strong>
         </li>
         <li>
           <span>Color</span>
-          <strong>{result.colorScore.toFixed(1)}%</strong>
+          <strong>{result.colorScore.toFixed(2)}%</strong>
         </li>
       </ul>
-
-      <p className="hint-text">Run diff after arranging builder elements to evaluate similarity.</p>
     </section>
   );
 }
